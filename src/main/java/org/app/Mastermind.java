@@ -39,7 +39,7 @@ public class Mastermind {
     private void generateCode() {
         code = new byte[length];
         for (int i = 0; i < length; i++) {
-            code[i] = (byte) random.nextInt(49, 48+range);
+            code[i] = (byte) random.nextInt(49, 49+range);
         }
     }
 
@@ -118,7 +118,7 @@ public class Mastermind {
         if (buffer.length != length)
             throw new IllegalArgumentException("length");
         for (int i = 0; i < length; i++)
-            if (buffer[i] < 49 || buffer[i] >= 48+range)
+            if (buffer[i] < 49 || buffer[i] >= 49+range)
                 throw new IllegalArgumentException("range");
         return true;
     }
