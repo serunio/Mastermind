@@ -107,7 +107,7 @@ public class Mastermind {
                 if (validateGuess(buffer)) break;
             } catch(IllegalArgumentException e) {
                 String message = e.getMessage().equals("length") ? "(zła długość)" :
-                                 e.getMessage().equals("range") ? "(wartość z poza zakresu)" : "";
+                                 e.getMessage().equals("range") ? "(wartość spoza zakresu)" : "";
                 System.out.printf("Nieprawidłowy format %s, spróbuj ponownie.\nPróba %d:\n", message, nOfTries);
             }
         }
