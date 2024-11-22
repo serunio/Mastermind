@@ -106,10 +106,9 @@ public class Mastermind {
             try {
                 if (validateGuess(buffer)) break;
             } catch(InvalidGuessException e) {
-                String message = switch(e.mode) {
-                    case 'l' -> "(zła długość)";
-                    case 'r' -> "(wartość spoza zakresu)";
-                    default -> "";
+                String message = switch(e.type) {
+                    case ErrorType.BADLENGTH -> "(zła długość)";
+                    case ErrorType.BADSYMBOL -> "(wartość spoza zakresu)";
                 };
 
                 System.out.printf("Nieprawidłowy format %s, spróbuj ponownie.\nPróba %d:\n", message, nOfTries);
@@ -120,10 +119,10 @@ public class Mastermind {
 
     private boolean validateGuess(byte[] buffer) {
         if (buffer.length != length)
-            throw new InvalidGuessException('l');
+            throw new InvalidGuessException(ErrorType.BADLENGTH);
         for (int i = 0; i < length; i++)
             if (buffer[i] < 49 || buffer[i] >= 49+range)
-                throw new InvalidGuessException('r');
+                throw new InvalidGuessException(ErrorType.BADSYMBOL);
         return true;
     }
 

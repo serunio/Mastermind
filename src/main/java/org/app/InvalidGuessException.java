@@ -2,10 +2,18 @@ package org.app;
 
 public class InvalidGuessException extends RuntimeException {
 
-    public final char mode;
+    public final ErrorType type;
 
-    public InvalidGuessException(char mode) {
+    public InvalidGuessException(ErrorType type) {
         super();
-        this.mode = mode;
+        this.type = type;
     }
+
 }
+
+enum ErrorType {
+    BADLENGTH, BADSYMBOL
+
+}
+
+
